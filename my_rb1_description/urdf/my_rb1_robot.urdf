@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<robot name="robot">
+
+    <!-- Define materials for visualization -->
+    <material name="blue">
+        <color rgba="0 0 1 1"/>
+    </material>
+
+    <material name="gray">
+        <color rgba="0.40 0.40 0.40 1"/>
+    </material>
+
+    <material name="red">
+        <color rgba="1 0 0 1"/>
+    </material>
+
+    <!-- Base footprint link -->
+    <link name="base_footprint">
+    </link>
+
+
+    <!-- Joint connecting base_link and base_footprint -->
+    <joint name="base_link_plate_joint" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0.15" />
+        <child link="base_link" />
+        <parent link="base_footprint" />
+    </joint>    
+
+    <!-- Base link -->
+    <link name="base_link">
+        <!-- <inertial>
+            <mass value="10" />
+            <origin xyz="0 0 0.3" rpy="0 0 0" />
+            <inertia ixx="1.5417" ixy="0" ixz="0" iyy="3.467" iyz="0" izz="4.742" />
+        </inertial> -->
+
+        <collision>
+            <geometry>
+                <cylinder radius="0.25" length="0.3"/>
+            </geometry>
+        </collision>
+
+        <visual>
+             <geometry>
+                <cylinder radius="0.25" length="0.3"/>
+            </geometry>
+            <material name="blue" />
+        </visual>
+    </link>
+</robot>
