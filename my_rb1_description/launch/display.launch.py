@@ -3,6 +3,7 @@ from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.substitutions import Command
 from launch_ros.actions import Node
+from launch_ros.parameter_descriptions import ParameterValue
 
 # ROS2 Launch System will look for this function definition #
 def generate_launch_description():
@@ -10,6 +11,15 @@ def generate_launch_description():
     # Get Package Description and Directory #
     package_description = "my_rb1_description"
     package_directory = get_package_share_directory(package_description)
+
+    # Joint State Publisher GUI
+    joint_state_publisher_gui_node = Node(
+        package='joint_state_publisher_gui',
+        executable='joint_state_publisher_gui',
+        name='joint_state_publisher_gui_node',
+        output="screen",
+        emulate_tty=True,
+    )
 
     # Load URDF File #
     urdf_file = 'my_rb1_robot.urdf'
@@ -24,7 +34,9 @@ def generate_launch_description():
         output="screen",
         emulate_tty=True,
         parameters=[{'use_sim_time': True, 
-                     'robot_description': Command(['xacro ', robot_desc_path])}]
+                    'robot_description': ParameterValue(Command(['xacro ', robot_desc_path]), value_type=str)}] # use Command for Xacro
+                    # 'robot_description': ParameterValue(open(robot_desc_path, 'r').read(), value_type=str)}]  # For pure URDF; 
+                    # 'robot_description': Command(['xacro ', robot_desc_path])}]
     )
 
     # Load RViz Configuration File #
@@ -45,6 +57,7 @@ def generate_launch_description():
     # Create and Return the Launch Description Object #
     return LaunchDescription(
         [
+            joint_state_publisher_gui_node,
             robot_state_publisher_node,
             rviz_node,
         ]
