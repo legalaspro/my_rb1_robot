@@ -1,0 +1,3 @@
+int16 degrees #  specify the number of degrees to rotate.
+---
+string result # specifies if the rotation has been completed successfully or not.
