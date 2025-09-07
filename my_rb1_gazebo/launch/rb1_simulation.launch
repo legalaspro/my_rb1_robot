@@ -14,7 +14,7 @@
 	</include>
 
     <!-- Spawn Coordinates -->
-    <arg name="x" default="-0.4"/>
+    <arg name="x" default="-0.5"/>
     <arg name="y" default="-1.325"/>
     <arg name="z" default="0.4"/>
 

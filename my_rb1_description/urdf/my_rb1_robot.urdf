@@ -39,8 +39,8 @@
     </gazebo>
 
     <gazebo reference="front_caster">
-        <mu1>0.0</mu1>
-        <mu2>0.0</mu2>
+        <mu1>0.1</mu1>
+        <mu2>0.1</mu2>
         <kp value="10000000.0" />
         <kd value="100.0" />
         <fdir1 value="0 0 1"/>
@@ -49,8 +49,8 @@
 
     <!-- Gazebo friction and material properties for back_caster -->
     <gazebo reference="back_caster">
-        <mu1>0.0</mu1>
-        <mu2>0.0</mu2>
+        <mu1>0.1</mu1>
+        <mu2>0.1</mu2>
         <kp value="10000000.0" />
         <kd value="100.0" />
         <fdir1 value="0 0 1"/>
